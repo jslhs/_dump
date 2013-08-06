@@ -1,0 +1,5 @@
+LIBRARY sf
+EXPORTS
+	funcA
+	funcB
+	funcC
