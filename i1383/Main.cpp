@@ -4,7 +4,9 @@
 #include <future>
 #include <functional>
 #include <thread>
+#include <sstream>
 #include "IRelay.h"
+#include <Windows.h>
 //#include <initializer_list>
 
 class A
@@ -29,6 +31,27 @@ private:
 
 enum class Color {red, blue, green};
 
+class dbg_stream
+{
+public:
+	dbg_stream(){}
+	~dbg_stream(){}
+
+	template<class T>
+	dbg_stream & operator << (const T& v)
+	{
+		std::stringstream _ss;
+		_ss << v;
+		OutputDebugStringA(_ss.str().c_str());
+		return *this;
+	}
+
+private:
+	
+};
+
+dbg_stream cdbg;
+
 int main(int argc, char *argv[])
 {
 	std::cout 
@@ -46,7 +69,7 @@ int main(int argc, char *argv[])
 		std::cout << x;
 	}
 
-	std::cout << "sizeof IEndpoint: " << sizeof(IEndpoint) << std::endl;
+	cdbg << 0x23;
 
 	t.join();
 	return 0;

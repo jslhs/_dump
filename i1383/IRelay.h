@@ -59,17 +59,11 @@ public:
 
 	virtual int connect(const IEndpoint &from, const IEndpoint &to) 
 	{ 
-		std::pair<IEndpoint, IEndpoint> wire(from, to);
-		_wires.push_back(wire);
-		return _wires.size() - 1; 
+		return 0;
 	}
 
 	virtual void disconnect(int index) 
 	{
-		if(index < 0 || index >= _wires.size()) throw std::invalid_argument("index underflow");
-		auto wire = _wires[index];
-		auto it = std::find(_wires.begin(), _wires.end(), wire);
-		_wires.erase(it);
 	}
 
 private:
