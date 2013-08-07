@@ -69,7 +69,7 @@ int main(int argc, char *argv[])
 		std::cout << x;
 	}
 
-	cdbg << 0x23;
+	cdbg << "hello, debugger!";
 
 	t.join();
 	return 0;
